@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80" width="420" height="80" role="img" aria-label="Depósito Dental San Lorenzo">
+  <defs>
+    <linearGradient id="gCobalt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#3730a3"/>
+    </linearGradient>
+    <linearGradient id="gCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── ISOTIPO MUELA ANATÓMICA ── -->
+  <g transform="translate(4, 4)">
+    <!-- Cuerpo principal de la muela -->
+    <path d="M36,4 C27,4 22,8 17,7 C11,5 7,12 7,21 C7,34 13,43 18,53 C21,60 21,73 24,77 C25,79 28,79 28,76 C28,68 30,60 34,54 C35,51 35.5,51 36,51 C36.5,51 37,51 38,54 C42,60 44,68 44,76 C44,79 47,79 48,77 C51,73 51,60 54,53 C59,43 65,34 65,21 C65,12 61,5 55,7 C50,8 45,4 36,4 Z"
+      fill="url(#gCobalt)"/>
+
+    <!-- Surco oclusal (cúspides) -->
+    <path d="M24,13 C30,17 32,17 36,12 C40,17 42,17 48,13"
+      fill="none" stroke="rgba(255,255,255,.38)" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Reflejo lateral izquierdo -->
+    <path d="M12,16 C9,17 8,23 8,29 C8,39 12,47 16,55"
+      fill="none" stroke="url(#gCyan)" stroke-width="3.5" stroke-linecap="round" opacity=".85"/>
+
+    <!-- Línea de brillo superior -->
+    <path d="M22,8 C28,11 32,10 36,7 C40,10 44,11 50,8"
+      fill="none" stroke="rgba(255,255,255,.18)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Raíz izquierda highlight -->
+    <path d="M28,69 C27,74 25,77 24,77" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Raíz derecha highlight -->
+    <path d="M44,69 C45,74 47,77 48,77" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- ── TEXTO DE MARCA ── -->
+  <!-- "DEPÓSITO DENTAL" — peso fuerte, color slate -->
+  <text
+    x="90" y="34"
+    font-family="'Space Mono', 'Courier New', monospace"
+    font-size="22"
+    font-weight="700"
+    fill="#0f172a"
+    letter-spacing="1">DEPÓSITO DENTAL</text>
+
+  <!-- Línea divisoria decorativa -->
+  <line x1="90" y1="42" x2="410" y2="42" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- "SAN LORENZO" — peso ligero, color cobalt -->
+  <text
+    x="90" y="62"
+    font-family="'Space Mono', 'Courier New', monospace"
+    font-size="18"
+    font-weight="400"
+    fill="#4f46e5"
+    letter-spacing="5">SAN LORENZO</text>
+
+  <!-- Punto de acento cyan -->
+  <circle cx="78" cy="52" r="3.5" fill="#06b6d4" opacity=".9"/>
+
+</svg>

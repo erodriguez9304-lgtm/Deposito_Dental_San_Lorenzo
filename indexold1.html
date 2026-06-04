@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Depósito Dental San Lorenzo</title>
+
+  <!-- Google Fonts: cargado async para no bloquear render -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Hoja de estilos -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════ -->
+<header class="main-header">
+  <div class="container header-inner">
+
+    <!-- Logotipo anatómico SVG inline (sin petición HTTP extra) -->
+    <a href="#" class="logo-wrap" onclick="return false;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" width="36" height="44" aria-hidden="true">
+        <defs>
+          <linearGradient id="gA" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4f46e5"/>
+            <stop offset="100%" stop-color="#3730a3"/>
+          </linearGradient>
+          <linearGradient id="gB" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#06b6d4"/>
+            <stop offset="100%" stop-color="#0891b2"/>
+          </linearGradient>
+        </defs>
+        <path d="M32,5 C23,5 18,9 13,8 C7,6 3,13 3,22 C3,35 9,44 14,54 C17,61 17,74 20,78 C21,80 24,80 24,77 C24,69 26,61 30,55 C31,52 31.5,52 32,52 C32.5,52 33,52 34,55 C38,61 40,69 40,77 C40,80 43,80 44,78 C47,74 47,61 50,54 C55,44 61,35 61,22 C61,13 57,6 51,8 C46,9 41,5 32,5 Z" fill="url(#gA)"/>
+        <path d="M20,14 C26,18 28,18 32,13 C36,18 38,18 44,14" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M8,17 C5,18 4,24 4,30 C4,40 8,48 12,56" fill="none" stroke="url(#gB)" stroke-width="3.5" stroke-linecap="round" opacity=".8"/>
+      </svg>
+      <div class="logo-text-group">
+        <span class="logo-brand">Depósito Dental</span>
+        <span class="logo-sub">San Lorenzo</span>
+      </div>
+    </a>
+
+    <!-- Navegación de vistas -->
+    <nav class="nav-tabs" role="tablist">
+      <button class="btn-tab active" id="tab-store" role="tab"
+        aria-selected="true" onclick="switchView('store')">
+        <span class="tab-icon" aria-hidden="true">🛒</span> Tienda
+        <span class="cart-badge" id="store-badge">0</span>
+      </button>
+      <button class="btn-tab pos-tab" id="tab-pos" role="tab"
+        aria-selected="false" onclick="switchView('pos')">
+        <span class="tab-icon" aria-hidden="true">🖥️</span> POS
+        <span class="cart-badge" id="pos-badge">0</span>
+      </button>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     TOASTS (notificaciones)
+═══════════════════════════════════════════ -->
+<div class="toast-container" id="toasts" aria-live="polite"></div>
+
+<!-- ══════════════════════════════════════════
+     MODAL de confirmación
+═══════════════════════════════════════════ -->
+<div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <span class="modal-icon" id="modal-icon" aria-hidden="true">✅</span>
+    <h2 id="modal-title">Transacción Exitosa</h2>
+    <p id="modal-msg">El pago fue procesado correctamente.</p>
+    <div class="modal-ticket" id="modal-ticket"></div>
+    <button class="btn-modal-close" onclick="closeModal()">Cerrar y Nueva Venta</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CONTENIDO PRINCIPAL
+═══════════════════════════════════════════ -->
+<main class="container" id="main-content">
+
+  <!-- ── VISTA TIENDA (B2C) ── -->
+  <section id="view-store" class="view active" role="tabpanel" aria-labelledby="tab-store">
+
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Catálogo de Insumos Odontológicos</h1>
+        <p>Inventario actualizado para profesionales. Cada compra acumula puntos de lealtad canjeables en mostrador y en línea.</p>
+        <div class="hero-chips">
+          <span class="chip"><span class="dot" aria-hidden="true"></span>Envío express CDMX</span>
+          <span class="chip gold"><span class="dot" aria-hidden="true"></span>Nivel Oro — 10% descuento</span>
+          <span class="chip silver"><span class="dot" aria-hidden="true"></span>Nivel Plata — 5% descuento</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="store-layout">
+
+      <!-- Catálogo de productos -->
+      <div>
+        <div class="section-header">
+          <h2 class="section-title">Materiales e Insumos</h2>
+          <span class="section-count" id="catalog-count"></span>
+        </div>
+        <div class="products-grid" id="catalog-grid">
+          <!-- Renderizado por app.js -->
+        </div>
+      </div>
+
+      <!-- Panel carrito -->
+      <aside>
+        <div class="cart-panel">
+          <h3>
+            <span aria-hidden="true">🛒</span> Carrito
+            <span class="cart-badge" id="cart-count-label">0</span>
+          </h3>
+          <div class="cart-items" id="store-cart-items">
+            <div class="cart-empty">
+              <span class="empty-icon" aria-hidden="true">🦷</span>
+              Agrega insumos al carrito
+            </div>
+          </div>
+          <div class="cart-summary" id="store-cart-summary" style="display:none">
+            <div class="summary-row"><span>Subtotal</span><span id="s-subtotal">$0.00</span></div>
+            <div class="summary-row total"><span>TOTAL</span><span id="s-total">$0.00</span></div>
+          </div>
+          <button class="btn-checkout" onclick="checkout()">Proceder al Pago →</button>
+          <button class="btn-clear-cart" onclick="clearStoreCart()">Vaciar carrito</button>
+          <div class="loyalty-banner">
+            ✨ <span>Como médico aliado registrado, tus puntos se acumulan automáticamente en cada compra.</span>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ── VISTA POS ── -->
+  <section id="view-pos" class="view" role="tabpanel" aria-labelledby="tab-pos">
+    <div class="pos-layout">
+
+      <!-- Panel izquierdo: búsqueda + acceso rápido -->
+      <div>
+        <div class="pos-search-wrap">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input
+            type="search"
+            class="pos-search"
+            id="pos-search-input"
+            placeholder="Escanear código de barras o escribir producto..."
+            oninput="filterQuickGrid(this.value)"
+            autocomplete="off"
+          >
+        </div>
+        <div class="section-header">
+          <h2 class="section-title">Acceso Rápido</h2>
+        </div>
+        <div class="quick-grid" id="quick-grid">
+          <!-- Renderizado por app.js -->
+        </div>
+      </div>
+
+      <!-- Panel derecho: ticket de venta -->
+      <div class="ticket-panel">
+        <div class="ticket-header">
+          <h3>🧾 Ticket de Venta</h3>
+          <span class="ticket-date" id="ticket-date"></span>
+        </div>
+
+        <div class="ticket-customer">
+          <label for="pos-client">👤 Médico Aliado / Cliente</label>
+          <select class="select-client" id="pos-client" onchange="applyDiscount()">
+            <option value="0">Público General (sin descuento)</option>
+            <option value="0.10">Dr. Alejandro Martínez — Nivel Oro 🥇</option>
+            <option value="0.05">Dra. Claudia Ruiz — Nivel Plata 🥈</option>
+            <option value="0.10">Dr. Marco Serrano — Nivel Oro 🥇</option>
+            <option value="0.05">Dra. Fernanda López — Nivel Plata 🥈</option>
+          </select>
+        </div>
+
+        <div class="ticket-items" id="ticket-items">
+          <div class="cart-empty">
+            <span class="empty-icon" aria-hidden="true">📋</span>
+            Ticket vacío
+          </div>
+        </div>
+
+        <div class="ticket-totals">
+          <div class="tot-row"><span>Subtotal</span><span id="t-subtotal">$0.00</span></div>
+          <div class="tot-row">
+            <span>Descuento Club <span class="discount-badge" id="discount-label">0%</span></span>
+            <span id="t-discount">-$0.00</span>
+          </div>
+          <div class="tot-row grand"><span>TOTAL</span><span id="t-total">$0.00</span></div>
+        </div>
+
+        <div class="ticket-actions">
+          <button class="btn-pay cash" onclick="processPayment('Efectivo')">💵 Efectivo</button>
+          <button class="btn-pay card"  onclick="processPayment('Tarjeta')">💳 Tarjeta</button>
+          <button class="btn-void"      onclick="clearPosCart()">🗑️ Anular ticket</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- JS al final del body: no bloquea el render del HTML ni del CSS -->
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
