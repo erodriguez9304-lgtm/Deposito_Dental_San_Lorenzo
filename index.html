@@ -2,215 +2,222 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Depósito Dental San Lorenzo</title>
-
-  <!-- Google Fonts: cargado async para no bloquear render -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Depósito Dental San Lorenzo | Insumos odontológicos en CDMX</title>
+  <meta name="description" content="Venta de insumos, materiales y equipos dentales. Atención a odontólogos, clínicas y laboratorios. Ubicados en CDMX, entregas express.">
+  <meta name="keywords" content="depósito dental, insumos odontológicos, materiales dentales, CDMX">
+  <meta name="author" content="Depósito Dental San Lorenzo">
+  
+  <!-- Preconnect para fuentes y Google Maps -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Hoja de estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  
+  <!-- CSS principal -->
   <link rel="stylesheet" href="assets/css/style.css">
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  
+  <!-- Open Graph para redes sociales -->
+  <meta property="og:title" content="Depósito Dental San Lorenzo">
+  <meta property="og:description" content="Insumos dentales de calidad en CDMX">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta property="og:type" content="website">
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
-     HEADER
-═══════════════════════════════════════════ -->
-<header class="main-header">
-  <div class="container header-inner">
-
-    <!-- Logotipo externo — cacheado por el navegador tras la primera carga -->
-    <a href="#" class="logo-wrap" onclick="return false;">
-      <img
-        src="assets/img/logo.svg"
-        alt="Depósito Dental San Lorenzo"
-        width="220"
-        height="52"
-        loading="eager"
-      >
-    </a>
-
-    <!-- Navegación de vistas -->
-    <nav class="nav-tabs" role="tablist">
-      <button class="btn-tab active" id="tab-store" role="tab"
-        aria-selected="true" onclick="switchView('store')">
-        <span class="tab-icon" aria-hidden="true">🛒</span> Tienda
-        <span class="cart-badge" id="store-badge">0</span>
-      </button>
-      <button class="btn-tab pos-tab" id="tab-pos" role="tab"
-        aria-selected="false" onclick="switchView('pos')">
-        <span class="tab-icon" aria-hidden="true">🖥️</span> POS
-        <span class="cart-badge" id="pos-badge">0</span>
-      </button>
-    </nav>
-
-  </div>
-</header>
-
-<!-- ══════════════════════════════════════════
-     TOASTS (notificaciones)
-═══════════════════════════════════════════ -->
-<div class="toast-container" id="toasts" aria-live="polite"></div>
-
-<!-- ══════════════════════════════════════════
-     MODAL de confirmación
-═══════════════════════════════════════════ -->
-<div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <div class="modal">
-    <span class="modal-icon" id="modal-icon" aria-hidden="true">✅</span>
-    <h2 id="modal-title">Transacción Exitosa</h2>
-    <p id="modal-msg">El pago fue procesado correctamente.</p>
-    <div class="modal-ticket" id="modal-ticket"></div>
-    <button class="btn-modal-close" onclick="closeModal()">Cerrar y Nueva Venta</button>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     CONTENIDO PRINCIPAL
-═══════════════════════════════════════════ -->
-<main class="container" id="main-content">
-
-  <!-- ── VISTA TIENDA (B2C) ── -->
-  <section id="view-store" class="view active" role="tabpanel" aria-labelledby="tab-store">
-
-    <div class="hero">
-      <div class="hero-content">
-        <h1>Catálogo de Insumos Odontológicos</h1>
-        <p>Inventario actualizado para profesionales. Cada compra acumula puntos de lealtad canjeables en mostrador y en línea.</p>
-        <div class="hero-chips">
-          <span class="chip"><span class="dot" aria-hidden="true"></span>Envío express CDMX</span>
-          <span class="chip gold"><span class="dot" aria-hidden="true"></span>Nivel Oro — 10% descuento</span>
-          <span class="chip silver"><span class="dot" aria-hidden="true"></span>Nivel Plata — 5% descuento</span>
-        </div>
-      </div>
+  <!-- Header fijo con logo y navegación mínima -->
+  <header class="landing-header">
+    <div class="container header-flex">
+      <img src="assets/img/logo.svg" alt="Depósito Dental San Lorenzo" class="logo" width="200" height="50">
+      <nav>
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#productos" class="nav-link">Productos</a>
+        <a href="#ubicacion" class="nav-link">Ubicación</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="store-layout">
-
-      <!-- Catálogo de productos -->
-      <div>
-        <div class="section-header">
-          <h2 class="section-title">Materiales e Insumos</h2>
-          <span class="section-count" id="catalog-count"></span>
+  <main>
+    <!-- Sección hero -->
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="hero-badge">📦 Distribuidor autorizado</span>
+          <h1>Depósito Dental <span class="highlight">San Lorenzo</span></h1>
+          <p>Más de 15 años abasteciendo a odontólogos, clínicas y laboratorios con insumos de alta calidad. Entrega express en CDMX y área metropolitana.</p>
+          <div class="hero-buttons">
+            <a href="https://wa.me/5215533941659?text=Hola,%20quiero%20cotizar%20insumos%20dentales" class="btn btn-primary" target="_blank">
+              📲 Cotizar por WhatsApp
+            </a>
+			<a href="tel:5571589279" class="btn btn-secondary" style="background:#0f5cbf;">
+			  📞 Llamar ahora
+			</a>
+            <a href="#productos" class="btn btn-secondary">Ver productos →</a>
+          </div>
+          <div class="trust-badges">
+            <span>✅ Precios competitivos</span>
+            <span>⚡ Entrega el mismo día</span>
+            <span>🦷 Atención personalizada</span>
+          </div>
         </div>
-        <div class="products-grid" id="catalog-grid">
-          <!-- Renderizado por app.js -->
+        <div class="hero-image">
+          <img src="assets/img/4.jpeg" alt="Depósito Dental San Lorenzo fachada" loading="eager">
         </div>
       </div>
+    </section>
 
-      <!-- Panel carrito -->
-      <aside>
-        <div class="cart-panel">
-          <h3>
-            <span aria-hidden="true">🛒</span> Carrito
-            <span class="cart-badge" id="cart-count-label">0</span>
-          </h3>
-          <div class="cart-items" id="store-cart-items">
-            <div class="cart-empty">
-              <span class="empty-icon" aria-hidden="true">🦷</span>
-              Agrega insumos al carrito
+    <!-- Galería del local (fotos reales) -->
+    <section class="gallery">
+      <div class="container">
+        <h2 class="section-title">📸 Conoce nuestro depósito</h2>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Se llena con JS desde assets/js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección productos destacados -->
+    <section id="productos" class="products-showcase">
+      <div class="container">
+        <h2 class="section-title">🦷 Lo que ofrecemos</h2>
+        <div class="products-grid-landing">
+          <div class="product-card-landing">
+            <div class="product-icon">💉</div>
+            <h3>Anestésicos y consumibles</h3>
+            <p>Cartuchos, agujas, jeringas y más.</p>
+          </div>
+          <div class="product-card-landing">
+            <div class="product-icon">🪥</div>
+            <h3>Material de profilaxis</h3>
+            <p>Pastas, cepillos, copas y hilo dental.</p>
+          </div>
+          <div class="product-card-landing">
+            <div class="product-icon">🔬</div>
+            <h3>Resinas y adhesivos</h3>
+            <p>De primeras marcas y excelente durabilidad.</p>
+          </div>
+          <div class="product-card-landing">
+            <div class="product-icon">⚙️</div>
+            <h3>Instrumental rotatorio</h3>
+            <p>Fresas, turbinas, piezas de mano.</p>
+          </div>
+          <div class="product-card-landing">
+            <div class="product-icon">🧪</div>
+            <h3>Impresión y cementado</h3>
+            <p>Siliconas, alginatos, cementos.</p>
+          </div>
+          <div class="product-card-landing">
+            <div class="product-icon">📦</div>
+            <h3>Equipo para laboratorio</h3>
+            <p>Micro motor, vibradores, recortadoras.</p>
+          </div>
+        </div>
+        <div class="text-center" style="margin-top: 2rem;">
+          <a href="https://wa.me/5215533941659?text=Hola,%20quisiera%20ver%20el%20catálogo%20completo" class="btn btn-outline" target="_blank">
+            📋 Ver catálogo completo por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ubicación + mapa -->
+    <section id="ubicacion" class="location-section">
+      <div class="container">
+        <!-- 1. El título ahora está fuera, centrado respecto a toda la sección -->
+        <h2 class="section-title">📍 Encuéntranos</h2>
+        
+        <div class="location-grid">
+          <!-- 2. Este bloque ahora solo contiene la tarjeta, alineándose perfectamente a la par del mapa -->
+          <div class="location-info">
+            <div class="address-card">
+              <p><strong>Dirección:</strong><br>
+              Av. Tlahuac 5171, 1er piso, San Lorenzo Tezonco, Iztapalapa, 09900 Ciudad de México, CDMX</p>
+              <p><strong>Referencia:</strong> A 100 Mts de la estación Tezonco línea 12 del metro CDMX.</p>
+              <p><strong>Horarios:</strong><br>
+              Lunes a Viernes: 9:00 am - 6:40 pm<br>
+              Sábados: 9:00 am - 3:40 pm<br>
+              Domingo: Cerrado</p>
+              <p><strong>📞 Teléfonos:</strong><br>
+              📱 55 7158 9279<br>
+              📱 55 4187 0200</p>
+              <a href="https://maps.google.com/?q=Depósito+Dental+San+Lorenzo+CDMX" class="btn btn-small" target="_blank">🗺️ Cómo llegar (Google Maps)</a>
+              <p style="margin-top: 0.5rem;">
+                <span style="background:#e8f5e9; padding:2px 8px; border-radius:20px; font-size:12px;">
+                  ✅ Verificado en Google Maps
+                </span>
+              </p>
             </div>
           </div>
-          <div class="cart-summary" id="store-cart-summary" style="display:none">
-            <div class="summary-row"><span>Subtotal</span><span id="s-subtotal">$0.00</span></div>
-            <div class="summary-row total"><span>TOTAL</span><span id="s-total">$0.00</span></div>
-          </div>
-          <button class="btn-checkout" onclick="checkout()">Proceder al Pago →</button>
-          <button class="btn-clear-cart" onclick="clearStoreCart()">Vaciar carrito</button>
-          <div class="loyalty-banner">
-            ✨ <span>Como médico aliado registrado, tus puntos se acumulan automáticamente en cada compra.</span>
+          
+          <div class="location-map">
+              <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.456484228985!2d-99.06727152604239!3d19.305988244714634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce024538562f59%3A0x8d622039ac08960d!2sDep%C3%B3sito%20Dental%20San%20Lorenzo!5e0!3m2!1ses!2smx!4v1780702626107!5m2!1ses!2smx" 
+                  width="100%" 
+                  height="400" 
+                  style="border:0; border-radius: 1rem;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
           </div>
         </div>
-      </aside>
+      </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- Contacto final -->
+    <section id="contacto" class="contact-cta">
+      <div class="container cta-card">
+        <h2>¿Necesitas una cotización urgente?</h2>
+        <p>Escríbenos por WhatsApp y te responderemos en menos de 10 minutos en horario laboral.</p>
+        <a href="https://wa.me/5215533941659?text=Hola,%20necesito%20información%20de%20insumos%20dentales" class="btn btn-wa-large" target="_blank">
+          💬 ¡Chatea con nosotros ahora!
+        </a>
+      </div>
+    </section>
+  </main>
 
-  <!-- ── VISTA POS ── -->
-  <section id="view-pos" class="view" role="tabpanel" aria-labelledby="tab-pos">
-    <div class="pos-layout">
-
-      <!-- Panel izquierdo: búsqueda + acceso rápido -->
+  <footer class="landing-footer">
+    <div class="container footer-grid">
       <div>
-        <div class="pos-search-wrap">
-          <span class="search-icon" aria-hidden="true">🔍</span>
-          <input
-            type="search"
-            class="pos-search"
-            id="pos-search-input"
-            placeholder="Escanear código de barras o escribir producto..."
-            oninput="filterQuickGrid(this.value)"
-            autocomplete="off"
-          >
-        </div>
-        <div class="section-header">
-          <h2 class="section-title">Acceso Rápido</h2>
-        </div>
-        <div class="quick-grid" id="quick-grid">
-          <!-- Renderizado por app.js -->
-        </div>
+        <img src="assets/img/logo.svg" alt="San Lorenzo Dental" width="160" class="logo-footer">
+        <p>Confianza y calidad para tu consultorio.</p>
       </div>
-
-      <!-- Panel derecho: ticket de venta -->
-      <div class="ticket-panel">
-        <div class="ticket-header">
-          <h3>🧾 Ticket de Venta</h3>
-          <span class="ticket-date" id="ticket-date"></span>
-        </div>
-
-        <div class="ticket-customer">
-          <label for="pos-client">👤 Médico Aliado / Cliente</label>
-          <select class="select-client" id="pos-client" onchange="applyDiscount()">
-            <option value="0">Público General (sin descuento)</option>
-            <option value="0.10">Dr. Alejandro Martínez — Nivel Oro 🥇</option>
-            <option value="0.05">Dra. Claudia Ruiz — Nivel Plata 🥈</option>
-            <option value="0.10">Dr. Marco Serrano — Nivel Oro 🥇</option>
-            <option value="0.05">Dra. Fernanda López — Nivel Plata 🥈</option>
-          </select>
-        </div>
-
-        <div class="ticket-items" id="ticket-items">
-          <div class="cart-empty">
-            <span class="empty-icon" aria-hidden="true">📋</span>
-            Ticket vacío
-          </div>
-        </div>
-
-        <div class="ticket-totals">
-          <div class="tot-row"><span>Subtotal</span><span id="t-subtotal">$0.00</span></div>
-          <div class="tot-row">
-            <span>Descuento Club <span class="discount-badge" id="discount-label">0%</span></span>
-            <span id="t-discount">-$0.00</span>
-          </div>
-          <div class="tot-row grand"><span>TOTAL</span><span id="t-total">$0.00</span></div>
-        </div>
-
-        <div class="ticket-actions">
-          <button class="btn-pay cash" onclick="processPayment('Efectivo')">💵 Efectivo</button>
-          <button class="btn-pay card"  onclick="processPayment('Tarjeta')">💳 Tarjeta</button>
-          <button class="btn-void"      onclick="clearPosCart()">🗑️ Anular ticket</button>
-        </div>
+      <div>
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+        </ul>
       </div>
-
+      <div>
+        <h4>Contacto rápido</h4>
+        <p>📞 55 7158 9279<br>📞 55 4187 0200<br>✉️ ventas@dentalsanlorenzo.com</p>
+      </div>
     </div>
-  </section>
+    <div class="footer-bottom">
+      <p>© 2026 Depósito Dental San Lorenzo - Todos los derechos reservados</p>
+    </div>
+  </footer>
 
-</main>
-
-<!-- JS al final del body: no bloquea el render del HTML ni del CSS -->
-<script src="assets/js/app.js"></script>
-
-<div class="floating-controls">
-  <a href="https://wa.me/5215533941659?text=Hola,%20quisiera%20más%20información%20sobre%20los%20insumos." target="_blank" class="float-btn btn-wa" aria-label="Contacto por WhatsApp">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/5215533941659?text=Hola,%20vi%20su%20landing%20y%20me%20interesa%20cotizar" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
-  <button id="btn-back-top" class="float-btn btn-top hidden" aria-label="Volver arriba">
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-  </button>
-</div>
+  
+  <!-- Lightbox para galería de fotos -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="event.stopPropagation(); changeImage(-1)">&#10094;</span>
+    <span class="next" onclick="event.stopPropagation(); changeImage(1)">&#10095;</span>
+    <img id="lightbox-img" src="" alt="Galería">
+    <div class="counter" id="lightbox-counter"></div>
+  </div>
 
+
+  <script src="assets/js/app.js" defer></script>
 </body>
 </html>
